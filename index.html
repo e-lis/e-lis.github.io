@@ -5,27 +5,79 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">BOARD ROOM</a>
+        <a class="nav-link" href="https://e-lis.github.io/?page=board_room">BOARD ROOM</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">CHAMPIONS</a>
+        <a class="nav-link" href="https://e-lis.github.io/?page=champions">CHAMPIONS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">OPERATIONS</a>
+        <a class="nav-link" href="https://e-lis.github.io/?page=operations">OPERATIONS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">COLLEGE AVENUE</a>
+        <a class="nav-link" href="https://e-lis.github.io/?page=college">COLLEGE AVENUE</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">CURRICULUM LIBRARY</a>
+        <a class="nav-link" href="https://e-lis.github.io/?page=curriculum">CURRICULUM LIBRARY</a>
       </li>
     </ul>
   </div>
 </nav>
+<script>
+  $(document).ready(function(){
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+    var changeframe = function()
+    {
+      var page = getUrlParameter(page);
+      var src = "https://api.rschooltoday.com/widget/6436135d-f267-11e8-b018-82d0d8eb3b02";
+      if(page == undefined || page == "board_room")
+      {
+         src = "https://api.rschooltoday.com/widget/6436135d-f267-11e8-b018-82d0d8eb3b02";
+      }else if ( page == "champions")
+      {
+        src = "https://api.rschooltoday.com/widget/ade886b2-f267-11e8-b018-82d0d8eb3b02";
+      }
+      else if (page == "operations")
+      {
+        src = "https://api.rschooltoday.com/widget/d7d48775-f267-11e8-b018-82d0d8eb3b02";
+      }
+      else if (page == "college")
+      {
+        src = "https://api.rschooltoday.com/widget/088100b8-f268-11e8-b018-82d0d8eb3b02";
+      }
+      else if (page == "curriculum")
+      {
+        src = "https://api.rschooltoday.com/widget/088100b8-f268-11e8-b018-82d0d8eb3b02";
+      }
+      $("#webApiWidgetId").attr("src",src);
+    }
+    $(".nav-link").click(function(){
+      changeframe();
+    });
+  })
+</script>
+<body>
+  <iframe id="webApiWidgetId"  
+          src="https://api.rschooltoday.com/widget/6436135d-f267-11e8-b018-82d0d8eb3b02" 
+          style="min-width:100%;width:100%; min-height:700px;height:700px;"  
+          frameborder=0  allowtransparency="true">
+  </iframe>
+</body>
