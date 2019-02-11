@@ -29,7 +29,16 @@
   </div>
 </nav>
 <script>
-  $(document).ready(function(){
+  $(window).resize(function(){
+    if(window.innerHeight == screen.height)
+    {
+      $(".nav-link").css("display","none");
+    }else
+    {
+      $(".nav-link").css("display","");
+    }
+  });
+  $(document).ready(function(){    
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
             sURLVariables = sPageURL.split('&'),
