@@ -78,8 +78,9 @@
       }
       $("#webApiWidgetId").attr("src",src);
     }
-    $(".nav-link").click(function(){
+    $(".nav-link").click(function(e){
       changeframe();
+      e.preventDefault();
     });
     changeframe();
   })
